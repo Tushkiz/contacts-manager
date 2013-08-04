@@ -2,23 +2,11 @@
 <html lang="en">
 
 	<head>
-		<title>Backbone Test</title>
+		<title>Contacts Manager</title>
 		
 		<!-- Scripts -->
 		<script src="scripts/vendor/jquery.min.js"> </script>
 		<script src="scripts/vendor/underscore.min.js"> </script>
-
-		<script id="contactTemplate" type="text/template">
-	    <img src="<%= photo %>" alt="<%= name %>" />
-	    <h1><%= name %> <span>[<%= type %>]</span></h1>
-	    <div><%= address %></div>
-	    <dl>
-	        <dt>Tel:</dt><dd><%= tel %></dd>
-	        <dt>Email:</dt><dd><a href="mailto:<%= email %>"><%= email %></a></dd>
-	    </dl>
-	    <button class="edit">Edit</button>
-	    <button class="delete">Delete</button>
-		</script>
 
 		<script id="contactCardTemplate" type="text/template">
 		<header class="header">
@@ -32,7 +20,7 @@
 		<div class="info">
 			<img src="<%= photo %>" alt="<%= name %>" class="photo-id">
 			<a href="tel:<%= tel %>"><%= tel %></a>
-			<a href="mailto:<%= email %>"><%= email %></a>
+			<a href="mailto:<%= email %>" target="_blank"><%= email %></a>
 			<address class="address">
 				<%= address%>
 			</address>
@@ -56,20 +44,59 @@
 	</head>
 	<body>
 		<div id="contacts">
-			<header>
-				<div id="filter"><label>Show Me:</label></div>
-				<a id="showForm" href="#">Add new contact</a>
+			<header class="top-bar">
+				<label>Show Me</label>
+				<div class="filter"></div>
+				<input class="search" placeholder="Search"/>
+				<a class="btn" id="showForm" href="#">New</a>
 				
 
-				<form id="addContact" action="#">
-					<label for="photo">Photo:</label><input id="photo" type="file" />
-					<label for="type">Type:</label><input id="type" />
-					<label for="name">Name:</label><input id="name" />
-					<label for="address">Address:</label><input id="address" />
-					<label for="tel">Tel:</label><input id="tel" />
-					<label for="email">Email:</label><input id="email" />
-					<button id="add">Add</button>
-				</form>
+				<div class="form-container">
+					<form class="form-horizontal" id="addContact">
+					  <div class="control-group">
+					    <label class="control-label" for="photo">Photo</label>
+					    <div class="input-controls">
+					      <input type="file" id="photo" placeholder="photo">
+					    </div>
+					  </div>
+					  <div class="control-group">
+					    <label class="control-label" for="name">Name</label>
+					    <div class="input-controls">
+					      <input id="name" placeholder="name">
+					    </div>
+					  </div>
+					  <div class="control-group">
+					    <label class="control-label" for="type">Type</label>
+					    <div class="input-controls">
+					      <input id="type" placeholder="type">
+					    </div>
+					  </div>
+					  <div class="control-group">
+					    <label class="control-label" for="address">Address</label>
+					    <div class="input-controls">
+					      <input id="address" placeholder="Address">
+					    </div>
+					  </div>
+					  <div class="control-group">
+					    <label class="control-label" for="tel">Phone</label>
+					    <div class="input-controls">
+					      <input id="tel" placeholder="telephone Number">
+					    </div>
+					  </div>
+					  <div class="control-group">
+					    <label class="control-label" for="email">Email</label>
+					    <div class="input-controls">
+					      <input id="email" placeholder="Email">
+					    </div>
+					  </div>
+					  <div class="control-group">
+					    <div class="input-controls">
+					      <button class="btn" id="add">Add</button>
+					    </div>
+					  </div>
+					</form>
+				</div>
+				
 			</header>
 		</div>		
 	</body>

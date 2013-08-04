@@ -57,7 +57,7 @@
 			this.remove();
 
 			if(_.indexOf(directory.getTypes(), removedType) === -1) {
-				directory.$el.find("#filter select").children("[value='" + removedType + "']").remove();
+				directory.$el.find(".filter select").children("[value='" + removedType + "']").remove();
 			}
 		},
 
@@ -114,7 +114,7 @@
             this.render();
 
             //if model acquired default photo property, remove it
-			if(prev.photo === "http://localhost/grid/img/tushar.jpg") {
+			if(prev.photo === "images/placeholder.jpg") {
 				delete prev.photo;
 			}
 
@@ -137,7 +137,7 @@
 			this.collection = new Directory(contacts);
 
             this.render();
-            this.$el.find("#filter").append(this.createSelect()); 
+            this.$el.find(".filter").append(this.createSelect()); 
 
             this.on("change:filterType", this.filterByType, this);
             this.collection.on("reset", this.render, this);
@@ -168,7 +168,7 @@
 		},
 		 
 		createSelect: function () {
-		    var filter = this.$el.find("#filter"),
+		    var filter = this.$el.find(".filter"),
 		        select = $("<select/>", {
 		            html: "<option>all</option>"
 		        });
@@ -184,7 +184,7 @@
 
 		//add ui events
         events: {
-            "change #filter select": "setFilter",
+            "change .filter select": "setFilter",
             "click #add": "addContact",
             "click #showForm": "showForm"
         },
@@ -212,22 +212,27 @@
 		    }
 		},
 
+		// add new contact
 		addContact: function(e) {
 			e.preventDefault();
 
 			var formData = {};
-			$("#addContact").children("input").each(function(i, el) {
+			$("#addContact").find("input").each(function (i, el) {
 				if($(el).val() !== "") {
 					formData[el.id] = $(el).val();
 				}
 			});
 
+			console.log(formData);
+
+			//update data store
 			contacts.push(formData);
 
+			//re-render select if new type is unknown
 			if(_.indexOf(this.getTypes(), formData.type) === -1) {
 				this.collection.add(new Contact(formData));
 				this.$el
-					.find('#filter')
+					.find('.filter')
 					.find('select').remove()
 					.end()
 					.append(this.createSelect());
@@ -235,14 +240,12 @@
 				this.collection.add(new Contact(formData));
 			}
 
-			$("#addContact").clear();
-
 		},
 
 		removeContact: function(removedModel) {
 			var removed = removedModel.attributes;
 
-			if(removed.photo === 'http://localhost/grid/img/tushar.jpg') {
+			if(removed.photo === 'images/placeholder.jpg') {
 				delete removed.photo;
 			}
 
@@ -254,9 +257,8 @@
 		},
 
 		showForm: function () {
-			console.log("toggle");
-            this.$el.find("#addContact").slideToggle();
-        }
+    	this.$el.find("#addContact").slideToggle();
+    }
 	});
 
 	var ContactsRouter = Backbone.Router.extend({
