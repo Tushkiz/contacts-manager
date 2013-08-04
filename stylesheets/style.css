@@ -1,0 +1,185 @@
+/* Main Styles */
+
+*, *:after, *:before {
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
+* {
+margin: 0;
+padding: 0;
+}
+
+body {
+font-family: sans-serif;
+font-size: 62.5%;
+background-color: #7bf;
+}
+a {
+text-decoration: none;
+display: block;
+}
+a:hover,
+a:active {
+outline: 0;
+}
+
+#contacts {
+	width:1300px;
+	margin:auto;
+}
+
+
+/* new card style */
+.card {
+background-color: #FFFFFF;
+width: 400px;
+box-shadow: -2px 2px 5px #888;
+margin: 20px 0 0 20px;
+float: left;
+}
+.card:after {
+content: "";
+display: table;
+clear: both;
+}
+
+/* header styles */
+.header {
+background-color: #2E2E2E;
+color: #eee;
+overflow: hidden;
+}
+.header h4 {
+padding: 10px 0 10px 15px;
+font-size: 1.6em;
+letter-spacing: 1px;
+float: left;
+}
+.header .controls {
+font-size: 1.6em;
+float: right;
+}
+.controls li {
+display: inline-block;
+}
+.controls li a {
+color: #eee;
+border-top: 3px solid transparent;
+padding: 7px 10px;
+}
+
+.controls li a:hover {
+border-top: 3px solid #F45E5F;
+}
+/* info styles */
+
+.info {
+}
+
+.hidden {
+	display: none;
+}
+
+.info img {
+width: 100px;
+margin: 15px;
+border-radius: 5px;
+float: left;
+}
+
+.info a, .info address {
+font-family: sans-serif;
+color: #222;
+font-size: 1.4em;
+padding: 15px 10px 0 0;
+}
+/* -------------- */
+
+
+header:after {
+	content:"";
+	display:block;
+	height:0;
+	visibility:hidden;
+	clear:both;
+	font-size:0;
+	line-height:0;
+}
+
+#filter {
+	float:left;
+}
+
+#showForm {
+	float:right;
+}
+
+#addContact {
+	display:none;
+	width:466px;
+	float:right;
+	clear:both;
+	font-family:sans-serif;
+	font-size:14px;
+}
+
+#addContact label {
+	width:60px;
+	margin-right:10px;
+	text-align:right;
+	line-height:25px;
+}
+
+#addContact label, #addContact input {
+	display:block;
+	margin-bottom:10px;
+	float:left;
+}
+
+#address {
+	width:380px;
+	margin-left:2px;
+}
+
+#addContact label[for="name"],
+#addContact label[for="address"],
+#addContact label[for="tel"] {
+	clear:both;
+}
+
+#addContact button {
+	display:block;
+	margin:10px 10px 0 0;
+	float:right;
+	clear:both;
+}
+
+.contact-container input,
+.contact-container select {
+	display:block;
+	margin:0;
+	float:left;
+}
+
+.contact-container .name,
+.contact-container .address {
+	clear:left;
+}
+
+.contact-container input {
+	margin:0 10px 3px 0;
+}
+
+.contact-container .address {
+	width:395px;
+	margin-right:0;
+}
+
+.contact-container .tel {
+	width:90px;
+}
+
+.contact-container form button {
+	margin:5px 0 0;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<title>Backbone Test</title>
+		
+		<!-- Scripts -->
+		<script src="http://localhost/scripts/jquery.min.js"> </script>
+		<script src="http://localhost/scripts/underscore.min.js"> </script>
+
+		<script id="contactTemplate" type="text/template">
+	    <img src="<%= photo %>" alt="<%= name %>" />
+	    <h1><%= name %> <span>[<%= type %>]</span></h1>
+	    <div><%= address %></div>
+	    <dl>
+	        <dt>Tel:</dt><dd><%= tel %></dd>
+	        <dt>Email:</dt><dd><a href="mailto:<%= email %>"><%= email %></a></dd>
+	    </dl>
+	    <button class="edit">Edit</button>
+	    <button class="delete">Delete</button>
+		</script>
+
+		<script id="contactCardTemplate" type="text/template">
+		<header class="header">
+			<h4><%= name %></h4>
+			<ul class="controls">
+				<li class="hide"><a href="#">-</a></li>
+				<li class="edit"><a href="#">#</a></li>
+				<li class="delete"><a href="#">x</a></li>
+			</ul>
+		</header>
+		<div class="info">
+			<img src="<%= photo %>" alt="<%= name %>" class="photo-id">
+			<a href="tel:<%= tel %>"><%= tel %></a>
+			<a href="mailto:<%= email %>"><%= email %></a>
+			<address class="address">
+				<%= address%>
+			</address>
+		</div>
+		</script>
+
+		<script id="contactEditTemplate" type="text/template">
+		<form action="#">
+		    <input type="file" value="<%= photo %>" />
+		    <input class="name" value="<%= name %>" />
+		    <input id="type" type="hidden" value="<%= type %>" />
+		    <input class="address" value="<%= address %>" />
+		    <input class="tel" value="<%= tel %>" />
+		    <input class="email" value="<%= email %>" />
+		    <button class="save">Save</button>
+		    <button class="cancel">Cancel</button>
+		</form>
+		</script>
+
+		<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+	</head>
+	<body>
+		<div id="contacts">
+			<header>
+				<div id="filter"><label>Show Me:</label></div>
+				<a id="showForm" href="#">Add new contact</a>
+				
+
+				<form id="addContact" action="#">
+					<label for="photo">Photo:</label><input id="photo" type="file" />
+					<label for="type">Type:</label><input id="type" />
+					<label for="name">Name:</label><input id="name" />
+					<label for="address">Address:</label><input id="address" />
+					<label for="tel">Tel:</label><input id="tel" />
+					<label for="email">Email:</label><input id="email" />
+					<button id="add">Add</button>
+				</form>
+			</header>
+		</div>		
+	</body>
+	
+	<script src="http://localhost/scripts/backbone.min.js"> </script>	
+	<script src="scripts/app.js"></script>
+</html>
