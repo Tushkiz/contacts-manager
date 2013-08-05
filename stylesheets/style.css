@@ -5,15 +5,26 @@
 -moz-box-sizing: border-box;
 box-sizing: border-box;
 }
+
 * {
 margin: 0;
 padding: 0;
 }
 
+::-moz-selection {
+	background-color: #4A4A4A;
+	color: #EEE;
+}
+
+::selection {
+	background-color: #4A4A4A;
+	color: #EEE;
+}
+
 body {
 font-family: sans-serif;
+background-color: #EAEAEA;
 font-size: 62.5%;
-background-color: #7bf;
 }
 a {
 text-decoration: none;
@@ -21,9 +32,11 @@ display: block;
 }
 a:hover,
 a:active,
+a:focus,
 input, select {
 outline: 0;
 }
+
 
 
 /* new card style */
@@ -31,6 +44,7 @@ outline: 0;
 background-color: #FFFFFF;
 width: 400px;
 border-radius: 6px;
+box-shadow: -1px 1px 1px #b0b0b0;
 margin: 20px 0 0 20px;
 float: left;
 }
@@ -46,7 +60,6 @@ border-radius: 6px;
 background-color: #FFF;
 color: #222;
 overflow: hidden;
-border-bottom: 1px solid #eee;
 }
 .header h4 {
 padding: 10px 0 10px 15px;
@@ -57,6 +70,7 @@ float: left;
 .header .controls {
 font-size: 1.6em;
 float: right;
+margin-right: 6px;
 }
 .controls li {
 display: inline-block;
@@ -74,6 +88,7 @@ border-top: 3px solid #F45E5F;
 
 /* info styles */
 .info {
+border-top: 1px solid #eee;
 }
 
 .hidden {
@@ -84,7 +99,7 @@ border-top: 3px solid #F45E5F;
 width: 100px;
 margin: 15px;
 border-radius: 5px;
-box-shadow: 1px 1px #ccc;
+box-shadow: -1px 1px 1px #ccc;
 float: left;
 }
 
@@ -94,8 +109,10 @@ color: #222;
 font-size: 1.4em;
 padding: 15px 10px 0 0;
 }
-/* -------------- */
 
+
+
+/* top bar */
 
 header:after {
 	content:"";
@@ -108,28 +125,29 @@ header:after {
 }
 
 .top-bar {
-	padding: 10px;
-	background-color: #33363B;
+	background-color: #4A4A4A;
 	color: #EEE;
 }
 
 .top-bar h1 {
 	float: left;
-	padding: 5px;
+	padding: 16px;
+	border-right: 1px solid #777;
 }
 .top-bar label {
 	display: block;
 	float: left;
-	font-size: 2em;
-	padding: 5px;
+	font-size: 20px;
+	padding: 15px;
 	margin-left: 50px;
 }
 .top-bar .filter {
-	width: 130px;
-	height: 36px;
+	width: 180px;
+	height: 56px;
 	overflow: hidden;
 	border-radius: 3px;
 	float: left;
+	padding: 10px 0 0 0;
 }
 
 .top-bar .filter select {
@@ -137,7 +155,7 @@ header:after {
 	width: 150px;
 	padding-left: 5px;
 	margin-left: 10px;
-	font-size: 2em;
+	font-size: 16px;
 	color: #222;
 	border: 0;
 	border-radius: 3px;
@@ -146,7 +164,8 @@ header:after {
 }
 .top-bar .search {
 	float: left;
-	margin-left: 50px;
+	/* margin-left: 50px; */
+	margin: 10px 0 12px 20px;
 }
 
 .btn {
@@ -155,17 +174,17 @@ header:after {
 	padding: 9px 16px;
 	background-color: #7bf;
 	color: #222;
-	font-size: 2em;
 	border: 0;
 	border-radius: 3px;
 }
 
 .top-bar a {
 	float: left;
-	margin-left: 50px;
+	/* margin-left: 50px; */
+	margin: 10px 0 12px 30px;
 }
 
-.top-bar a:hover {
+.btn:hover {
 	background-color: #8cf;
 }
 
@@ -173,26 +192,28 @@ header:after {
 /* New Contact Form */
 .form-container {
 clear: both;
+border-top: 1px solid #777;
 }
+
 input {
   display: inline-block;
   margin-bottom: 0;
-  padding: 5px;
-  font-size: 2em;
+  padding: 8px;
   vertical-align: middle;
   border: 0;
+  font-size: 16px;
   border-radius: 3px;
 }
 
-.form-horizontal {
+#addContact {
 padding-top: 30px;
-font-size: 1em;
+font-size: 16px;
 width: 500px;
 display: none;
 }
 
 .form-horizontal .control-group {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .form-horizontal .control-group:before,
 .form-horizontal .control-group:after {
@@ -207,9 +228,10 @@ display: none;
 
 .form-horizontal .control-label {
   float: left;
-  width: 50px;
+  width: 100px;
   padding-top: 5px;
   text-align: right;
+  font-size: 20px;
 }
 
 .form-horizontal .input-controls {
@@ -217,14 +239,43 @@ display: none;
 }
 
 
-/* ---------------- */
-
-::-moz-selection {
-	background-color: #EEE;
-	color: #222;
+/* Edit Contact Form */
+.modal {
+	width: 500px;
+	padding: 20px;
+	background-color: #4a4a4a;
+	color: #eee;
+	position: fixed;
+	top: 0;
+	left: 50%;
+	height: auto;
+	z-index: 2000;
+	backface-visibility: hidden;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	display: none;
 }
 
-::selection {
-	background-color: #EEE;
+.modal-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    opacity: 1;
+    background: rgba(255,255,255,0.8);
+    transition: all 0.3s;
+    display: none;
+}
+
+.modal select {
+	background: #fff;
+	width: 150px;
+	font-size: 16px;
 	color: #222;
+	border: 0;
+	border-radius: 3px;
+	height: 36px;
+	-webkit-appearance: none;
 }

@@ -28,22 +28,60 @@
 		</script>
 
 		<script id="contactEditTemplate" type="text/template">
-		<form action="#">
-		    <input type="file" value="<%= photo %>" />
-		    <input class="name" value="<%= name %>" />
-		    <input id="type" type="hidden" value="<%= type %>" />
-		    <input class="address" value="<%= address %>" />
-		    <input class="tel" value="<%= tel %>" />
-		    <input class="email" value="<%= email %>" />
-		    <button class="save">Save</button>
-		    <button class="cancel">Cancel</button>
-		</form>
+		<div class="modal-overlay"></div>
+		<div class="modal">
+		<form class="form-horizontal" id="editContact">
+	  
+				<div class="control-group">
+			    <label class="control-label" for="photo">Photo</label>
+			    <div class="input-controls">
+			      <input type="file" id="photo" value="<%= photo %>" placeholder="photo">
+			    </div>
+				</div>
+			  <div class="control-group">
+			    <label class="control-label" for="name">Name</label>
+			    <div class="input-controls">
+			      <input id="name" value="<%= name %>" placeholder="name">
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <label class="control-label" for="type">Type</label>
+			    <div id="typeControl" class="input-controls">
+			      <input id="type" type="hidden" value="<%= type %>"placeholder="type">
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <label class="control-label" for="address">Address</label>
+			    <div class="input-controls">
+			      <input id="address" value="<%= address %>" placeholder="Address">
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <label class="control-label" for="tel">Phone</label>
+			    <div class="input-controls">
+			      <input id="tel" value="<%= tel %>" placeholder="telephone Number">
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <label class="control-label" for="email">Email</label>
+			    <div class="input-controls">
+			      <input id="email" value="<%= email %>" placeholder="Email">
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <div class="input-controls">
+			      <button class="btn save">Save</button>
+    				<button class="btn cancel">Cancel</button>
+			    </div>
+			  </div>
+			</form>
+		</div>
 		</script>
 
 		<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 	</head>
 	<body>
-		<div id="contacts">
+		<div class="contacts-container">
 			<header class="top-bar">
 				<h1>Contacts Manager</h1>
 				<label>Show Me</label>
@@ -97,7 +135,6 @@
 					  </div>
 					</form>
 				</div>
-				
 			</header>
 		</div>		
 	</body>

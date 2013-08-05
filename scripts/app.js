@@ -63,15 +63,17 @@
 
 		editContact: function () {
 		    this.$el.html(this.editTemplate(this.model.toJSON()));
-		 
+		    $('.modal-overlay').fadeIn();
+		    $('.modal').slideDown();
 		    var newOpt = $("<option/>", {
 		        html: "<em>Add new...</em>",
 		        value: "addType"   
 		    });
-		 
+		 	
+		 		
 		    this.select = directory.createSelect().addClass("type")
 		        .val(this.$el.find("#type").val()).append(newOpt)
-		        .insertAfter(this.$el.find(".name"));
+		        .appendTo(this.$el.find("#typeControl"));
 		 
 		    this.$el.find("input[type='hidden']").remove();
 		},
@@ -86,7 +88,7 @@
 
 				$("<input />", {
 					"class": "type"
-				}).insertAfter(this.$el.find(".name")).focus();
+				}).	appendTo(this.$el.find("#typeControl")).focus();
 			}
 		},
 
@@ -94,24 +96,27 @@
 			e.preventDefault();
 
 			var formData = {},
-				prev = this.model.previousAttributes();
+					prev = this.model.previousAttributes();
 
 			//get form data
-            $(e.target).closest("form").find(":input").not("button").each(function () {
-                var el = $(this);
-                formData[el.attr("class")] = el.val();
-            });
+      $(e.target).closest("form")
+      					 .find(":input")
+      					 .not("button")
+      					 .each(function () {
+          					var el = $(this);
+          					formData[el.attr("id")] = el.val();
+      					});
 
-            //use default photo if none supplied
-            if (formData.photo === "") {
-                delete formData.photo;
-            }
+    	//use default photo if none supplied
+      if (formData.photo === "") {
+          delete formData.photo;
+      }
 
-            //update model
-            this.model.set(formData);
+      //update model
+      this.model.set(formData);
 
-            //render view
-            this.render();
+      //render view
+      this.render();
 
             //if model acquired default photo property, remove it
 			if(prev.photo === "images/placeholder.jpg") {
@@ -123,15 +128,17 @@
 					contacts.splice(_.indexOf(contacts, contact), 1, formData);
 				}
 			});
+			
 		},
 
 		cancelEdit: function() {
+
 			this.render();
 		}		
 	});
 
 	var DirectoryView = Backbone.View.extend({
-		el: $('#contacts'),
+		el: $('.contacts-container'),
 
 		initialize: function() {
 			this.collection = new Directory(contacts);
@@ -223,10 +230,12 @@
 				}
 			});
 
-			console.log(formData);
 
 			//update data store
-			contacts.push(formData);
+			if(formData.name !== undefined) 
+				contacts.push(formData);
+			else return;
+			
 
 			//re-render select if new type is unknown
 			if(_.indexOf(this.getTypes(), formData.type) === -1) {
