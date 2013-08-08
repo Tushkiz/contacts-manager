@@ -7,7 +7,6 @@ An app to create and manage contact cards.
 
 * Search by Name
 * Backend for persistant storage
-* Validation
 
 ## Technologies
 * Backbone (front-end)
