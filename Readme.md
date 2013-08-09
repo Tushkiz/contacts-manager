@@ -7,6 +7,8 @@ An app to create and manage contact cards.
 
 * Search by Name
 * Backend for persistant storage
+* Links to Social Network profiles
+* Responsive Design
 
 ## Technologies
 * Backbone (front-end)

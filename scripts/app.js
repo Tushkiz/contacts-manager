@@ -14,7 +14,7 @@
 			name: "",
 			address: "not assigned",
 			tel: "not assigned",
-			email: "",
+			email: "not assigned",
 			type: "",
 			photo: "http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&f=y"
 		}
@@ -362,6 +362,7 @@
 		events: {
 		    "change .filter select": "setFilter",
 		    "click #add": "addContact",
+		    "click #cancel": "showForm",
 		    "click #showForm": "showForm"
 		},
 
