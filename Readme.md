@@ -3,11 +3,12 @@
 An app to create and manage contact cards.
 
 
-## To be done
+## Todo
 
 * Search by Name
-* Backend for persistant storage
+* Birth Date
 * Links to Social Network profiles
+* Backend for persistant storage
 * Responsive Design
 
 ## Technologies
